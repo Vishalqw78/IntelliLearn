@@ -1,0 +1,136 @@
+/* Navbar toggler */
+input#nav-toggle:checked ~ label#show-button {
+  display: none;
+}
+
+input#nav-toggle:checked ~ label#hide-button {
+  display: flex;
+}
+
+input#nav-toggle:checked ~ #nav-menu {
+  display: block;
+}
+
+/* Navbar items */
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.nav-item {
+  margin: 0.75rem;
+}
+
+.nav-link {
+  padding: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #6fd0c8;
+}
+
+.nav-dropdown {
+  margin-right: 0;
+}
+
+.nav-dropdown-list {
+  display: none;
+  z-index: 10;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  opacity: 0;
+}
+.nav-dropdown:hover .nav-dropdown-list {
+  display: block;
+  opacity: 1;
+}
+
+/* This is supposed to show the dropdown list when its parent is hovered over */
+@media (max-width: 768px) {
+  .nav-dropdown:hover .nav-dropdown-list {
+    opacity: 1;
+  }
+}
+
+.nav-dropdown-item {
+  margin-bottom: 0.25rem;
+}
+
+.nav-dropdown-link {
+  min-width: 150px;
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.nav-dropdown-link:hover {
+  color: #6fd0c8;
+}
+
+/* Search style */
+.search-modal {
+  visibility: hidden;
+  position: absolute;
+  top: 10;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 2.5rem;
+  background-color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+@media (max-width: 768px) {
+  .search-modal {
+    top: 0;
+  }
+}
+
+.search-modal .form-input {
+  height: 60px;
+  width: 100%;
+  border: none;
+  font-size: 1.125rem;
+}
+
+.search-modal .form-input:focus {
+  outline: none;
+  border: none;
+  /* Remove the border when input is focused */
+}
+
+.search-modal .search-close {
+  position: absolute;
+  top: 50%;
+  right: 0.5px;
+  transform: translateY(-50%);
+  padding: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.search-modal.open {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 50px;
+}

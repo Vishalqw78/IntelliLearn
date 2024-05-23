@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the User model
+model User {
+  id       String     @id @default(uuid())
+  Name     String
+  email    String     @unique
+  password String
+  avatar   String
+  verified Boolean    @default(false)
+  tokens   Token[]
+  posts    Post[]
+  question Question[]
+  answers  Answers[]
+  social   Social?
+  comments Comment[] // New relation with Comment model
+}
+
+model Post {
+  id       String    @id @default(uuid())
+  title    String
+  content  String
+  image    String    @default("https://bookworm-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fposts%2F03.jpg&w=1080&q=75")
+  author   User      @relation(fields: [authorId], references: [id])
+  authorId String
+  views    Int       @default(0)
+  date     DateTime  @default(now())
+  Category String[]
+  comments Comment[] // New relation with Comment model
+}
+
+model Question {
+  id       String    @id @default(uuid())
+  title    String
+  content  String
+  author   User      @relation(fields: [authorId], references: [id])
+  authorId String
+  views    Int       @default(0)
+  date     DateTime  @default(now())
+  Category String[]
+  answers  Answers[] // New relation with Comment model
+}
+
+model Social {
+  id       String  @id @default(uuid())
+  user     User?   @relation(fields: [userId], references: [id])
+  userId   String? @unique
+  insta    String? @default("https://instagram.com")
+  twitter  String? @default("https://twitter.com")
+  facebook String? @default("https://facebook.com")
+}
+
+model Token {
+  id        String   @id @default(uuid())
+  userId    String
+  token     String
+  expiresAt DateTime
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+// Define the Comment model
+model Comment {
+  id        String    @id @default(uuid())
+  text      String
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  String
+  post      Post      @relation(fields: [postId], references: [id])
+  postId    String
+  parent    Comment?  @relation("CommentToParent", fields: [parentId], references: [id])
+  parentId  String?
+  children  Comment[] @relation("CommentToParent")
+  createdAt DateTime  @default(now())
+  expanded  Boolean   @default(true)
+}
+
+model Answers {
+  id         String    @id @default(uuid())
+  text       String
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   String
+  question   Question  @relation(fields: [questionId], references: [id])
+  questionId String
+  parent     Answers?  @relation("CommentToParent", fields: [parentId], references: [id])
+  parentId   String?
+  children   Answers[] @relation("CommentToParent")
+  createdAt  DateTime  @default(now())
+  expanded   Boolean   @default(true)
+}
