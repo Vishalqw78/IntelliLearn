@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
                     },
                 });
 
-                const url = `http://localhost:8080/users/${user.id}/verify/${token.token}`;
+                const url = `https://intellilearn-f0dw.onrender.com/users/${user.id}/verify/${token.token}`;
                 await sendVerificationEmail(user.email, url);
             }
 

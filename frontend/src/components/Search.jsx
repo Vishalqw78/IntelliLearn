@@ -89,7 +89,7 @@ export default function Search() {
     
                 setLoading(true); // Set loading state to true before fetching data
     
-                const response = await axios.get(`http://localhost:8080/api/search?key=${input}`);
+                const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/search?key=${input}`);
                 const postData = response.data;
     
                 const transformedArrayOfPostObjects = await Promise.all(postData.map(transformPostObject));

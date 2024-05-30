@@ -79,7 +79,7 @@ export default function Homepage() {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/getallQuestions`);
+        const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/getallQuestions`);
         const questionData = response.data;
 
         const transformedQuestions = await Promise.all(questionData.map(transformPostObject));

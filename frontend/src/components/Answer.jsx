@@ -3,7 +3,7 @@ import axios from 'axios';
 import io from "socket.io-client";
 import { AuthContext } from '../context/AuthContext';
 
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect("https://intellilearn-f0dw.onrender.com");
 
 function createTree(list) {
   const map = {};
@@ -124,7 +124,7 @@ function Answer({ answer, collapse, reply, deleteAnswer, author }) {
 export default function Answers({ questionId, authorId }) {
   const [answers, setAnswers] = useState([]);
   const [answerTree, setAnswerTree] = useState([]);
-  const socket = io.connect("http://localhost:8080");
+  const socket = io.connect("https://intellilearn-f0dw.onrender.com");
   const {currentUser} =useContext(AuthContext);
   const currentid= currentUser?.id;
 
@@ -145,7 +145,7 @@ export default function Answers({ questionId, authorId }) {
 
   const fetchAnswers = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/answers?questionId=${questionId}`);
+      const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/answers?questionId=${questionId}`);
       if (Array.isArray(response.data)) {
         setAnswers(response.data);
         setAnswerTree(createTree(response.data));
@@ -175,7 +175,7 @@ export default function Answers({ questionId, authorId }) {
 
   const handleReply = async (parentId, replyText) => {
     try {
-      await axios.post('http://localhost:8080/api/answers', {
+      await axios.post('https://intellilearn-f0dw.onrender.com/api/answers', {
         text: replyText,
         parentId,
         questionId,
@@ -190,7 +190,7 @@ export default function Answers({ questionId, authorId }) {
 
   const handleDelete = async (answerId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/answers/${answerId}`);
+      await axios.delete(`https://intellilearn-f0dw.onrender.com/api/answers/${answerId}`);
       sendMessage(); // Moved sendMessage call here
       fetchAnswers(); // Refresh answers after deleting one
     } catch (error) {

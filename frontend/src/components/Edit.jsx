@@ -65,7 +65,7 @@ const PopupEdit = () => {
         const fetchPostDetails = async () => {
           try {
     
-            const response = await axios.get(`http://localhost:8080/api/PostDetails/${id}`);
+            const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/PostDetails/${id}`);
             
     
             setPostDetails(response.data);
@@ -416,7 +416,7 @@ const PopupEdit = () => {
       await deletePreviousFile(prevtitle);
       
       
-      const response = await axios.put(`http://localhost:8080/api/updatepost/${id}`,postData,{
+      const response = await axios.put(`https://intellilearn-f0dw.onrender.com/api/updatepost/${id}`,postData,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

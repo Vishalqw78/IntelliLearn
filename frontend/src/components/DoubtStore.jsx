@@ -292,7 +292,7 @@ const DoubtStoreEditor = ({ editorc }) => {
       console.log(postData);
       
       
-      const response = await axios.post('http://localhost:8080/api/createQuestion',postData,{
+      const response = await axios.post('https://intellilearn-f0dw.onrender.com/api/createQuestion',postData,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

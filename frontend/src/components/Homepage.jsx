@@ -80,7 +80,7 @@ export default function Homepage() {
       try {
         
   
-        const response = await axios.get(`http://localhost:8080/api/getallPost`);
+        const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/getallPost`);
         const postData = response.data;
   
         const transformedArrayOfPostObjects = await Promise.all(postData.map(transformPostObject));

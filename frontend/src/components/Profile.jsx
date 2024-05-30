@@ -37,7 +37,7 @@ const Profile = () => {
       try {
         // Check if id is truthy (not null or undefined)
         if (id) {
-          const response = await axios.get(`http://localhost:8080/api/author/${id}`);
+          const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/author/${id}`);
           console.log(response.data);
           setDetails(response.data);
           setSocialData(response.data.social); // Set social data from fetched details
@@ -73,7 +73,7 @@ const Profile = () => {
         console.error("Token not found.");
         return;
       }
-      await axios.put(`http://localhost:8080/api/profile/${details.id}`, socialData,{
+      await axios.put(`https://intellilearn-f0dw.onrender.com/api/profile/${details.id}`, socialData,{
         headers: {
           Authorization: `Bearer ${token}`,
         },

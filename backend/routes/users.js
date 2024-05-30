@@ -53,7 +53,7 @@ const expireDate = afterOneHour.toISOString();
                 expiresAt:expireDate
             },
         });
-        const url = `http://localhost:8080/api/verification/${createdUser.id}/verify/${token.token}`
+        const url = `https://intellilearn-f0dw.onrender.com/api/verification/${createdUser.id}/verify/${token.token}`
         await sendVerificationEmail(createdUser.email,url);
         res.status(201).send({ message: "Email verification sent successfully"});
     } catch (error) {

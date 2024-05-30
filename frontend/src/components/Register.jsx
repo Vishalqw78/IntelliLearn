@@ -39,7 +39,7 @@ const Register = () => {
       };
 
       // Make HTTP POST request to register user
-      await axios.post("http://localhost:8080/api/register", userData);
+      await axios.post("https://intellilearn-f0dw.onrender.com/api/register", userData);
 
       // If registration is successful
       console.log("User created");

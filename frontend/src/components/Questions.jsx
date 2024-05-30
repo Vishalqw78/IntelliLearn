@@ -37,7 +37,7 @@ export default function Post() {
     const fetchPostDetails = async () => {
       try {
 
-        const response = await axios.get(`http://localhost:8080/api/QuestionDetails/${id}`);
+        const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/QuestionDetails/${id}`);
 
         setPostDetails(response.data);
 
@@ -64,7 +64,7 @@ export default function Post() {
 
   const addview =async(id)=>{
     try {
-      const response = await axios.put(`http://localhost:8080/api/addviewQ/${id}`);
+      const response = await axios.put(`https://intellilearn-f0dw.onrender.com/api/addviewQ/${id}`);
       
     } catch (error) {
       console.error("Error adding view to post:", error.message);
@@ -98,7 +98,7 @@ export default function Post() {
         return;
       }
   
-      const response = await axios.delete(`http://localhost:8080/api/deleteQuestion/${id}`, {
+      const response = await axios.delete(`https://intellilearn-f0dw.onrender.com/api/deleteQuestion/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

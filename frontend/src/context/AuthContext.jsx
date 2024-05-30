@@ -11,7 +11,7 @@ export const AuthContextProvider = ({ children }) => {
       // Check if the token is present
       if (token) {
         try {
-          const response = await axios.get("http://localhost:8080/api/check-auth", {
+          const response = await axios.get("https://intellilearn-f0dw.onrender.com/api/check-auth", {
             headers: {
               Authorization: `Bearer ${token}`,
             },

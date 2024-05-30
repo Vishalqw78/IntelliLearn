@@ -2,7 +2,7 @@ import React, { useState, useEffect,useContext } from 'react';
 import axios from 'axios';
 import io from "socket.io-client";
 import { AuthContext } from '../context/AuthContext';
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect("https://intellilearn-f0dw.onrender.com");
 
 function createTree(list) {
   const map = {};
@@ -128,7 +128,7 @@ export default function Comments({ postId, authorId }) {
   const {currentUser} =useContext(AuthContext);
   const currentid= currentUser?.id;
 
-  const socket = io.connect("http://localhost:8080");
+  const socket = io.connect("https://intellilearn-f0dw.onrender.com");
 
   function sendMessage() {
     socket.emit("send_message", { message: "Hello from client" });
@@ -147,7 +147,7 @@ export default function Comments({ postId, authorId }) {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/comments?postId=${postId}`);
+      const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/comments?postId=${postId}`);
       if (Array.isArray(response.data)) {
         setComments(response.data);
         setCommentTree(createTree(response.data));
@@ -177,7 +177,7 @@ export default function Comments({ postId, authorId }) {
 
   const handleReply = async(parentId, replyText) => {
     try {
-      await axios.post('http://localhost:8080/api/comments', {
+      await axios.post('https://intellilearn-f0dw.onrender.com/api/comments', {
         text: replyText,
         parentId,
         postId,
@@ -193,7 +193,7 @@ export default function Comments({ postId, authorId }) {
 
   const handleDelete = async(commentId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/comments/${commentId}`);
+      await axios.delete(`https://intellilearn-f0dw.onrender.com/api/comments/${commentId}`);
       sendMessage(); // Moved sendMessage call here
       fetchComments(); // Refresh comments after deleting one
     } catch (error) {

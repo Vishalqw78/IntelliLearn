@@ -19,7 +19,7 @@ const Author = () => {
   useEffect(() => {
     const fetchAuthorDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/author/${id}`);
+        const response = await axios.get(`https://intellilearn-f0dw.onrender.com/api/author/${id}`);
         console.log(response.data);
         setDetails(response.data);
       } catch (error) {

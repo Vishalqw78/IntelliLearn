@@ -344,7 +344,7 @@ const PopupEditor = ({ editorc }) => {
       console.log(postData);
       
       
-      const response = await axios.post('http://localhost:8080/api/createPost',postData,{
+      const response = await axios.post('https://intellilearn-f0dw.onrender.com/api/createPost',postData,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
