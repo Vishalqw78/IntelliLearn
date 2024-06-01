@@ -142,7 +142,7 @@ export default function Homepage() {
             {currentTableData.map((data, i) => (
               <div
                 key={i}
-                className={`p-8 sm:p-4 ${
+                className={`py-8 ${
                   i === 0 ? "col-12" : "col-12 sm:col-6 sm:w-1/2"
                 }`}
               >
