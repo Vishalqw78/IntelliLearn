@@ -43,7 +43,7 @@ router.get("/:id/verify/:token/", async (req, res) => {
             }
         });
 
-        res.redirect('http://localhost:5173/verification');
+        res.redirect('https://intellilearn-react.onrender.com/verification');
     } catch (error) {
         console.log(error);
         res.status(500).send({ message: "Internal Server Error" });
