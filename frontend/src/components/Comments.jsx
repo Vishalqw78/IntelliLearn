@@ -75,12 +75,14 @@ function Comment({ comment, collapse, reply, deleteComment,author }) {
         >
           {comment.expanded ? `[-]` : `[+]`}
         </div>
-        <div
+        {author === currentid && (
+          <div
           onClick={toggleReply}
           className="cursor-pointer ml-2 text-sm"
         >
           Reply
         </div>
+        )}
         {author === currentid && (
           <div
             onClick={handleDelete}

@@ -67,7 +67,7 @@ export default function App() {
           <Route path="/signup" element={<AuthRoute><Register/></AuthRoute>} />
           <Route path="/write" element={<ProtectedRoute><PopupEditor /></ProtectedRoute>} />
           <Route path="/ask" element={<ProtectedRoute><DoubtStoreEditor /></ProtectedRoute>} />
-          <Route path="/question/:id" element={<ProtectedRoute><Questions /></ProtectedRoute>} />
+          <Route path="/question/:id" element={<Questions />} />
           
           <Route path="/edit/:id" element={<ProtectedRoute><PopupEdit /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
